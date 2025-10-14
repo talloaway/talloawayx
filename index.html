@@ -345,6 +345,20 @@
             align-items: center;
             justify-content: center;
             }
+                    .time-display {
+            border: 2px solid var(--primary-color); 
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 1.25rem; 
+            font-weight: 700;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--light-color);
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -357,7 +371,7 @@
                 دوري تل وعاوع الرياضي
             </h1>
                         <!-- النص الجديد -->
-            <p class="text-xl md:text-2xl font-bold text-yellow-300 mb-4 glow-text">
+           <p class="text-xl md:text-2xl font-bold text-yellow-300 mb-4 glow-text countdown-title">
                 تبدأ المباراة الأولى بعد
             </p>
             <!-- Countdown Timer -->
@@ -392,8 +406,7 @@
                     <label for="time1" class="block text-sm font-medium text-green-200 mb-2">
                         <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
                     </label>
-                    <input type="text" id="time1" value="الأربعاء 3:00 مساءً"
-                           class="time-input w-full max-w-xs mx-auto" data-key="match1_time">
+<div class="time-display w-full max-w-xs mx-auto">الأربعاء 3:00 مساءً</div>
                 </div>
                 
                 <!-- Teams Input -->
@@ -441,8 +454,7 @@
                     <label for="time2" class="block text-sm font-medium text-green-200 mb-2">
                         <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
                     </label>
-                    <input type="text" id="time2" value="الأربعاء 4:00 مساءً"
-                           class="time-input w-full max-w-xs mx-auto" data-key="match2_time">
+                  <div class="time-display w-full max-w-xs mx-auto">الأربعاء 4:00 مساءً</div>
                 </div>
                 
                 <!-- Teams Input -->
@@ -464,7 +476,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <label for="team2b" class="block text-base font-medium text-green-200 mb-2">الفريق الثاني</label>
-                       <div class="team-name-display w-full max-w-xs mx-auto">أرزونة </div>
+                       <div class="team-name-display w-full max-w-xs mx-auto">أرزونة</div>
                     </div>
                 </div>
             </div>
@@ -800,7 +812,18 @@
                 صفحة الدوري على فيسبوك
             </a>
         </div>
+        <!-- زر تواصل معنا -->
+        <div class="text-center pt-4">
+            <a href="https://wa.me/+963991363913" 
+               target="_blank"
+               class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 animated-item">
+                <i class="fab fa-whatsapp ml-2 text-xl"></i>
+                تواصل معنا عبر واتساب
+            </a>
+        </div>
+
         <!-- Copyright Section -->
+        <div class="text-center pt-4 border-t border-gray-700/50 mt-4">
         <div class="text-center pt-4 border-t border-gray-700/50 mt-4">
             <p class="text-gray-400 text-sm">
                 حقوق النشر محفوظة &copy; <span class="text-yellow-400">Yazan Salm</span>
@@ -809,31 +832,15 @@
     </div>
 <script>
 // حفظ البيانات في localStorage
-function saveData() {
-    const inputs = document.querySelectorAll('input[data-key]');
-    inputs.forEach(input => {
-        localStorage.setItem(input.dataset.key, input.value);
-    });
-}
 
-// تحميل البيانات من localStorage
-function loadData() {
-    const inputs = document.querySelectorAll('input[data-key]');
-    inputs.forEach(input => {
-        const savedValue = localStorage.getItem(input.dataset.key);
-        if (savedValue) {
-            input.value = savedValue;
-        }
-    });
-}
 
 // إضافة event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    loadData(); // تحميل البيانات المحفوظة
+    loadData(); //
     
-    const inputs = document.querySelectorAll('input[data-key]');
+   
     inputs.forEach(input => {
-        input.addEventListener('input', saveData); // حفظ عند التعديل
+      
     });
     
     // باقي الكود الحالي...
@@ -846,42 +853,83 @@ document.addEventListener('DOMContentLoaded', function() {
 
        <!-- JavaScript for Countdown Timer -->
        <script>
-        // Countdown Timer Function
-        function updateCountdown() {
-            // الحصول على الوقت الحالي حسب توقيت سوريا (UTC+3)
-            const now = new Date();
-            
-            // إنشاء تاريخ مستهدف (الأربعاء القادم 3:00 مساءً بتوقيت سوريا)
-            const target = new Date();
-            
-            // حساب الأربعاء القادم (اليوم 3 = الأربعاء)
-            const daysUntilWednesday = (3 + 7 - now.getDay()) % 7 || 7;
-            target.setDate(now.getDate() + daysUntilWednesday);
-            
-            // ضبط الوقت لـ 3:00 مساءً بتوقيت سوريا
-            target.setHours(15, 0, 0, 0); // 15 = 3:00 مساءً
-            
-            // إذا كان الوقت الحالي تجاوز موعد المباراة، نضيف أسبوع
-            if (now > target) {
-                target.setDate(target.getDate() + 7);
-            }
-            
-            // حساب الفرق الزمني
-            const timeDiff = target - now;
-            
-            // حساب الأيام، الساعات، الدقائق، الثواني
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-            
-            // تحديث العرض
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+          // Countdown Timer Function - معدلة
+function updateCountdown() {
+    // الحصول على الوقت الحالي
+    const now = new Date();
+    
+    // إنشاء تاريخ مستهدف (3:00 مساءً اليوم)
+    const targetFirstMatch = new Date();
+    targetFirstMatch.setHours(15, 0, 0, 0); // 3:00 مساءً
+    
+    // إنشاء تاريخ مستهدف للمباراة الثانية (4:00 مساءً)
+    const targetSecondMatch = new Date();
+    targetSecondMatch.setHours(16, 0, 0, 0); // 4:00 مساءً
+    
+    const countdownElement = document.querySelector('.countdown');
+    const match1Element = document.getElementById('match-1');
+    const match2Element = document.getElementById('match-2');
+    const countdownTitle = document.querySelector('.countdown-title');
+    
+    // إذا كانت الساعة قبل 3:00 مساءً
+    if (now < targetFirstMatch) {
+        // العد التنازلي للمباراة الأولى
+        const timeDiff = targetFirstMatch - now;
+        updateDisplay(timeDiff);
+        countdownTitle.textContent = "تبدأ المباراة الأولى بعد";
+        match1Element.style.opacity = "1";
+        match2Element.style.opacity = "0.5";
+    }
+    // إذا كانت بين 3:00 و 4:00 مساءً
+    else if (now >= targetFirstMatch && now < targetSecondMatch) {
+        // عرض رسالة بدء المباراة الأولى والعد التنازلي للمباراة الثانية
+        const timeDiff = targetSecondMatch - now;
+        updateDisplay(timeDiff);
+        countdownTitle.textContent = "بدأت المباراة الأولى - تبدأ المباراة الثانية بعد";
+        match1Element.style.opacity = "0.8";
+        match2Element.style.opacity = "1";
+        
+        // إضافة رسالة خاصة للمباراة الأولى
+        const match1TimeElement = match1Element.querySelector('.time-display');
+        if (match1TimeElement) {
+            match1TimeElement.innerHTML = "بدأت المباراة <span style='color: var(--accent-color);'>🔥</span>";
         }
+    }
+    // إذا كانت بعد 4:00 مساءً
+    else {
+        // عرض رسالة انتهاء المباريات
+        countdownTitle.textContent = "انتهت مباريات اليوم";
+        document.getElementById('days').textContent = "00";
+        document.getElementById('hours').textContent = "00";
+        document.getElementById('minutes').textContent = "00";
+        document.getElementById('seconds').textContent = "00";
+        
+        const match1TimeElement = match1Element.querySelector('.time-display');
+        const match2TimeElement = match2Element.querySelector('.time-display');
+        
+        if (match1TimeElement) {
+            match1TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary-color);'>⏱️</span>";
+        }
+        if (match2TimeElement) {
+            match2TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary-color);'>⏱️</span>";
+        }
+    }
+}
 
+// دالة مساعدة لتحديث العرض
+function updateDisplay(timeDiff) {
+    // حساب الأيام، الساعات، الدقائق، الثواني
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    
+    // تحديث العرض
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
         document.addEventListener('DOMContentLoaded', () => {
             // Start the countdown timer
             updateCountdown();
@@ -912,6 +960,3 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
-
-
-
