@@ -426,6 +426,16 @@
     background: linear-gradient(45deg, #e73cd0, #c0392b) !important;
     box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4) !important;
 }
+        /* زر مباريات نصف النهائي */
+        #semiFinalsBtn {
+            background: linear-gradient(45deg, #e67e22, #d35400) !important;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4) !important;
+        }
+        /* زر مباريات ربع النهائي */
+        #quarterFinalsBtn {
+            background: linear-gradient(45deg, #8e44ad, #9b59b6) !important;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4) !important;
+        }
     </style>
 </head>
 
@@ -465,7 +475,7 @@
         <!-- 1. Match 1 Card -->
         <div class="match-card p-4 md:p-6 rounded-2xl border-l-8 border-green-500 animated-item" id="match-1">
             <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 border-b pb-2 border-green-200/30 flex items-center">
-                <i class="fas fa-futbol ml-2 text-yellow-400"></i>    المباراة الأولى(الأخيرة في ربع النهائي)
+                <i class="fas fa-futbol ml-2 text-yellow-400"></i>    المباراة الأولى
             </h2>
             <div class="space-y-4 md:space-y-6">
                 <!-- Time and Date Input -->
@@ -473,7 +483,7 @@
                     <label for="time1" class="block text-sm font-medium text-green-200 mb-2">
                         <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
                     </label>
-<div class="time-display w-full max-w-xs mx-auto">الثلاثاء 3:30 عصراً</div>
+<div class="time-display w-full max-w-xs mx-auto">الأربعاء 3:30 عصراً</div>
                 </div>
                 
                 <!-- Teams Input -->
@@ -483,7 +493,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <label for="team1a" class="block text-base font-medium text-green-200 mb-2">الفريق الأول</label>
-                      <div class="team-name-display w-full max-w-xs mx-auto">تلوعاوع</div>
+                      <div class="team-name-display w-full max-w-xs mx-auto">الرياف</div>
                     </div>
                     
                     <div class="vs-badge pulse-animation my-2 sm:my-0">
@@ -512,7 +522,7 @@
         <!-- 3. Match 2 Card -->
         <div class="match-card p-4 md:p-6 rounded-2xl border-l-8 border-green-500 animated-item" id="match-2">
             <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 border-b pb-2 border-green-200/30 flex items-center">
-                <i class="fas fa-futbol ml-2 text-yellow-400"></i>  (لا يوجد اليوم مباراة ثانية)  
+                <i class="fas fa-futbol ml-2 text-yellow-400"></i> المباراة الثانية    
             </h2>
 
             <div class="space-y-4 md:space-y-6">
@@ -521,7 +531,7 @@
                     <label for="time2" class="block text-sm font-medium text-green-200 mb-2">
                         <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
                     </label>
-                  <div class="time-display w-full max-w-xs mx-auto">---------</div>
+                  <div class="time-display w-full max-w-xs mx-auto">الأربعاء الساعة 4:30 عصراً</div>
                 </div>
                 
                 <!-- Teams Input -->
@@ -531,7 +541,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <label for="team2a" class="block text-base font-medium text-green-200 mb-2">الفريق الأول</label>
-                      <div class="team-name-display w-full max-w-xs mx-auto">----</div>
+                      <div class="team-name-display w-full max-w-xs mx-auto">الزينبية</div>
                     </div>
                     
                     <div class="vs-badge pulse-animation my-2 sm:my-0">
@@ -543,7 +553,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <label for="team2b" class="block text-base font-medium text-green-200 mb-2">الفريق الثاني</label>
-                       <div class="team-name-display w-full max-w-xs mx-auto">------------</div>
+                       <div class="team-name-display w-full max-w-xs mx-auto">جب الأملس</div>
                     </div>
                 </div>
             </div>
@@ -558,6 +568,178 @@
         <p id="attendance-text" class="animated-item text-2xl md:text-4xl font-extrabold text-white text-center glow-text pb-4 md:pb-8 pt-2 md:pt-4 stadium-effect p-4 rounded-xl">
             <i class="fas fa-handshake mr-2"></i> حضوركم يشرفنا
         </p>
+<!-- زر مباريات نصف النهائي -->
+<div class="text-center pt-6 animated-item">
+    <button id="semiFinalsBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
+        <i class="fas fa-flag-checkered ml-2"></i> مباريات نصف النهائي
+    </button>
+</div>
+
+<!-- قسم مباريات نصف النهائي (مخفي في البداية) -->
+<div id="semiFinalsSection" class="hidden mt-6 animated-item">
+    <div class="match-card p-6 rounded-2xl">
+        <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
+            <i class="fas fa-flag-checkered ml-2"></i> مباريات نصف النهائي
+        </h2>
+        
+        <div class="space-y-6">
+            <!-- مباراة نصف النهائي 1 -->
+            <div class="semi-final-match bg-gradient-to-l from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30">
+                <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الأولى</h3>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex-1 text-center">
+                        <h4 class="font-bold text-white text-lg">الزينبية</h4>
+                        <p class="text-green-300 text-sm"></p>
+                    </div>
+                    <div class="vs-badge my-2 md:my-0">
+                        ضد
+                    </div>
+                    <div class="flex-1 text-center">
+                        <h4 class="font-bold text-white text-lg">جب الأملس</h4>
+                        <p class="text-green-300 text-sm"></p>
+                    </div>
+                </div>
+                <div class="text-center mt-2 text-gray-300">
+                    <i class="far fa-clock ml-1"></i> غداً 3:30              </div>
+            </div>
+
+            <!-- مباراة نصف النهائي 2 -->
+            <div class="semi-final-match bg-gradient-to-l from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30">
+                <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الثانية</h3>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex-1 text-center">
+                        <h4 class="font-bold text-white text-lg">الزينبية-</h4>
+                        <p class="text-green-300 text-sm"></p>
+                    </div>
+                    <div class="vs-badge my-2 md:my-0">
+                        ضد
+                    </div>
+                    <div class="flex-1 text-center">
+                        <h4 class="font-bold text-white text-lg">جب الأملس</h4>
+                        <p class="text-green-300 text-sm"></p>
+                    </div>
+                </div>
+                <div class="text-center mt-2 text-gray-300">
+                    <i class="far fa-clock ml-1"></i>       غداً 4:30        </div>
+            </div>
+        </div>
+
+        <!-- زر إغلاق -->
+        <div class="text-center mt-6">
+            <button id="closeSemiFinalsBtn" class="btn-secondary py-2 px-6">
+                <i class="fas fa-times ml-2"></i> إغلاق
+            </button>
+        </div>
+    </div>
+</div>
+        <!-- زر مباريات ربع النهائي -->
+        <div class="text-center pt-6 animated-item">
+            <button id="quarterFinalsBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
+                <i class="fas fa-trophy ml-2"></i> مباريات ربع النهائي
+            </button>
+        </div>
+
+        <!-- قسم مباريات ربع النهائي (مخفي في البداية) -->
+        <div id="quarterFinalsSection" class="hidden mt-6 animated-item">
+            <div class="match-card p-6 rounded-2xl">
+                <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
+                    <i class="fas fa-flag ml-2"></i> مباريات ربع النهائي
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- مباراة ربع النهائي 1 -->
+                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
+                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الأولى</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">شباب أرزونة</h4>
+                                <p class="text-green-300 text-sm">2 أهداف</p>
+                            </div>
+                            <div class="vs-badge my-2 md:my-0">
+                                ضد
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">الزينبية</h4>
+                                <p class="text-green-300 text-sm">4 هدف</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2 text-gray-300">
+                            <i class="far fa-clock ml-1"></i> الخميس 16-10-2025
+                        </div>
+                    </div>
+
+                    <!-- مباراة ربع النهائي 2 -->
+                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
+                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثانية</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">السودة</h4>
+                                <p class="text-green-300 text-sm">0 أهداف</p>
+                            </div>
+                            <div class="vs-badge my-2 md:my-0">
+                                ضد
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">الرياف</h4>
+                                <p class="text-green-300 text-sm">4 أهداف</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2 text-gray-300">
+                            <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
+                        </div>
+                    </div>
+
+                    <!-- مباراة ربع النهائي 3 -->
+                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
+                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثالثة</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">جب الأملس</h4>
+                                <p class="text-green-300 text-sm">7 أهداف</p>
+                            </div>
+                            <div class="vs-badge my-2 md:my-0">
+                                ضد
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">حبرون</h4>
+                                <p class="text-green-300 text-sm">0 هدف</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2 text-gray-300">
+                            <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
+                        </div>
+                    </div>
+
+                    <!-- مباراة ربع النهائي 4 -->
+                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
+                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الرابعة</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">تلوعاوع</h4>
+                                <p class="text-green-300 text-sm">0 أهداف</p>
+                            </div>
+                            <div class="vs-badge my-2 md:my-0">
+                                ضد
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h4 class="font-bold text-white text-lg">الطليعي</h4>
+                                <p class="text-green-300 text-sm">3 أهداف</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2 text-gray-300">
+                            <i class="far fa-clock ml-1"></i>الأثنين 20-10-2025
+                        </div>
+                    </div>
+                </div>
+الفرق المتأهلة لنصف النهائي: الزينبية- جب الأملس-الرياف- الطليعي
+                <!-- زر إغلاق -->
+                <div class="text-center mt-6">
+                    <button id="closeQuarterFinalsBtn" class="btn-secondary py-2 px-6">
+                        <i class="fas fa-times ml-2"></i> إغلاق
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- زر جدول نقاط الفرق -->
         <div class="text-center pt-6 animated-item">
@@ -1082,7 +1264,7 @@
 <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
     <div class="flex items-center space-x-3 space-x-reverse">
         <div class="player-photo w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-pink-400">
-            <img src="images/player6.jpg" alt="علي عبد الرحمن" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjk0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+            <img src="images/player6.jpg" alt="علي عبد الرحمن" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjk0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3S2Zz4K'">
         </div>
         <div class="flex-1">
             <h3 class="font-bold text-white text-lg">علي عبد الرحمن</h3>
@@ -1587,11 +1769,11 @@
     
     // إنشاء تاريخ مستهدف (3:00 مساءً اليوم)
     const targetFirstMatch = new Date();
-    targetFirstMatch.setHours(15, 0, 0, 0); // 3:00 مساءً
+    targetFirstMatch.setHours(15, 30, 0, 0); // 3:00 مساءً
     
     // إنشاء تاريخ مستهدف للمباراة الثانية (4:00 مساءً)
     const targetSecondMatch = new Date();
-    targetSecondMatch.setHours(16, 0, 0, 0); // 4:00 مساءً
+    targetSecondMatch.setHours(16, 30, 0, 0); // 4:00 مساءً
     
     const countdownElement = document.querySelector('.countdown');
     const match1Element = document.getElementById('match-1');
@@ -1669,6 +1851,36 @@
                 void item.offsetWidth; 
                 item.style.opacity = 1; 
             });
+            // التحكم في قسم مباريات نصف النهائي
+            const semiFinalsBtn = document.getElementById('semiFinalsBtn');
+            const semiFinalsSection = document.getElementById('semiFinalsSection');
+            const closeSemiFinalsBtn = document.getElementById('closeSemiFinalsBtn');
+
+            if (semiFinalsBtn && semiFinalsSection) {
+                semiFinalsBtn.addEventListener('click', function() {
+                    semiFinalsSection.classList.remove('hidden');
+                    semiFinalsSection.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                closeSemiFinalsBtn.addEventListener('click', function() {
+                    semiFinalsSection.classList.add('hidden');
+                });
+            }
+            // التحكم في قسم مباريات ربع النهائي
+            const quarterFinalsBtn = document.getElementById('quarterFinalsBtn');
+            const quarterFinalsSection = document.getElementById('quarterFinalsSection');
+            const closeQuarterFinalsBtn = document.getElementById('closeQuarterFinalsBtn');
+
+            if (quarterFinalsBtn && quarterFinalsSection) {
+                quarterFinalsBtn.addEventListener('click', function() {
+                    quarterFinalsSection.classList.remove('hidden');
+                    quarterFinalsSection.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                closeQuarterFinalsBtn.addEventListener('click', function() {
+                    quarterFinalsSection.classList.add('hidden');
+                });
+            }
 
             // التحكم في قسم جدول نقاط الفرق
             const standingsBtn = document.getElementById('standingsBtn');
@@ -1721,4 +1933,3 @@
     </script>
 </body>
 </html>
-
