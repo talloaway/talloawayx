@@ -8,266 +8,182 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Arabic Font */
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
         
         :root {
-            --primary-color: #1a3a8f;
-            --secondary-color: #e63946;
-            --accent-color: #ffd166;
-            --dark-color: #0a1931;
-            --light-color: #f8f9fa;
-            --field-color: #2d6a4f;
+            --primary: #1e3a8a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
         }
         
         body {
             font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(26, 58, 143, 0.9)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
             min-height: 100vh;
-            color: var(--light-color);
-        }
-
-        /* Define Fade In animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animated-item {
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .match-card {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .match-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* --- Animation Delays (for Video Recording Effect) --- */
-        #match-1 {
-            animation-delay: 1s; 
-        }
-
-        #football-icon {
-            animation-delay: 1.5s; /* Appears after match 1 */
-        }
-
-        #match-2 {
-            animation-delay: 2s; /* Appears after the icon */
+            overflow-x: hidden;
         }
         
-        #location-text {
-            animation-delay: 3s; /* Appears after match 2 */
-        }
-        
-        #attendance-text {
-            animation-delay: 3.5s; /* Appears after location */
-        }
-        /* ---------------------------------------------------- */
-
-        .team-name-input {
-            border: none;
-            border-bottom: 3px solid var(--accent-color); 
-            outline: none;
-            background-color: transparent;
-            font-weight: 800; 
-            text-align: center;
-            color: var(--light-color);
-            padding: 4px 8px;
-            font-size: 1.125rem;
-            transition: all 0.3s ease;
-        }
-
-        .team-name-input:focus {
-            border-bottom-color: var(--secondary-color);
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
-
-        .time-input {
-            border: 2px solid var(--primary-color); 
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 1.25rem; 
-            font-weight: 700;
-            padding: 8px 12px;
-            border-radius: 10px;
-            color: var(--light-color);
-            transition: all 0.3s ease;
-        }
-
-        .time-input:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
-        }
-
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .stadium-effect {
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             position: relative;
             overflow: hidden;
         }
-
-        .stadium-effect::before {
+        
+        .hero-gradient::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            z-index: 1;
-            animation: shine 3s infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="%23ffffff" stop-opacity=".1"/><stop offset="1" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><g fill="url(%23a)"><circle cx="250" cy="250" r="150"/><circle cx="750" cy="750" r="200"/><circle cx="600" cy="300" r="100"/></g></svg>');
+            opacity: 0.3;
+            animation: float 20s infinite linear;
         }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.6);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #ef4444);
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(220, 38, 38, 0.6);
+        }
+        
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 15px;
             text-align: center;
             min-width: 80px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .countdown-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .countdown-item:hover::before {
+            opacity: 1;
+        }
+        
         .countdown-value {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--accent-color);
+            color: var(--accent);
             margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 209, 102, 0.7);
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary-color), #2a4ba0);
-            color: white;
-            font-weight: bold;
-            padding: 12px 24px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 58, 143, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(26, 58, 143, 0.6);
-            background: linear-gradient(45deg, #2a4ba0, var(--primary-color));
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, var(--secondary-color), #f25c5c);
-            color: white;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(230, 57, 70, 0.6);
-        }
-
-        .btn-accent {
-            background: linear-gradient(45deg, var(--accent-color), #ffdf80);
-            color: var(--dark-color);
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 209, 102, 0.4);
-        }
-
-        .btn-accent:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(255, 209, 102, 0.6);
-        }
-
-        .league-title {
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-        }
-
-        .league-title::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-
-        .vs-badge {
-            background: var(--secondary-color);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.5);
-            position: relative;
-            z-index: 2;
-        }
-
-        .team-logo-placeholder {
+        
+        .team-logo {
             width: 80px;
             height: 80px;
             background: rgba(255, 255, 255, 0.1);
@@ -277,119 +193,66 @@
             justify-content: center;
             margin: 0 auto 10px;
             font-size: 2rem;
-            color: var(--accent-color);
+            color: var(--accent);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .countdown {
-                flex-wrap: wrap;
-            }
-            
-            .countdown-item {
-                min-width: 70px;
-                padding: 10px;
-            }
-            
-            .countdown-value {
-                font-size: 1.5rem;
-            }
-            
-            .team-logo-placeholder {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            
-            .vs-badge {
-                width: 50px;
-                height: 50px;
-                font-size: 1rem;
-            }
+            transition: all 0.3s ease;
         }
         
-        @media (max-width: 480px) {
-            .countdown-item {
-                min-width: 60px;
-                padding: 8px;
-            }
-            
-            .countdown-value {
-                font-size: 1.2rem;
-            }
-            
-            .team-logo-placeholder {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .vs-badge {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-            
+        .team-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
         
-        .team-name-display {
-            font-weight: 800;
-            text-align: center;
-            color: var(--light-color);
-            padding: 4px 8px;
-            font-size: 1.125rem;
-            border-bottom: 3px solid var(--accent-color);
-            min-height: 32px;
+        .vs-badge {
+            background: var(--secondary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            }
-                    .time-display {
-            border: 2px solid var(--primary-color); 
-            background-color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 1.25rem; 
-            font-weight: 700;
-            padding: 8px 12px;
-            border-radius: 10px;
-            color: var(--light-color);
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* جدول النقاط */
-        .standings-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        
-        .standings-table th {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 8px;
-            text-align: center;
             font-weight: bold;
-            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5);
+            animation: pulse 2s infinite;
+            position: relative;
         }
         
-        .standings-table td {
-            padding: 10px 8px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .vs-badge::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary);
+            opacity: 0.5;
+            animation: pulse-ring 2s infinite;
         }
         
-        .standings-table tr:hover {
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to left, var(--accent), var(--primary));
+            border-radius: 2px;
+        }
+        
+        .table-row:hover {
             background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .team-cell {
-            text-align: right !important;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: background 0.3s;
         }
         
         .position-badge {
@@ -401,20 +264,25 @@
             border-radius: 50%;
             font-size: 0.8rem;
             font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .position-badge:hover {
+            transform: scale(1.2);
         }
         
         .position-1 {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
         }
         
         .position-2 {
-            background: linear-gradient(45deg, #C0C0C0, #A0A0A0);
+            background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
             color: #000;
         }
         
         .position-3 {
-            background: linear-gradient(45deg, #CD7F32, #A66D28);
+            background: linear-gradient(135deg, #CD7F32, #A66D28);
             color: #000;
         }
         
@@ -422,1417 +290,1551 @@
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
-        #standingsBtn {
-    background: linear-gradient(45deg, #e73cd0, #c0392b) !important;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4) !important;
-}
-        /* زر مباريات نصف النهائي */
-        #semiFinalsBtn {
-            background: linear-gradient(45deg, #e67e22, #d35400) !important;
-            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4) !important;
+        
+        .player-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
         }
-        /* زر مباريات ربع النهائي */
-        #quarterFinalsBtn {
-            background: linear-gradient(45deg, #8e44ad, #9b59b6) !important;
-            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4) !important;
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .player-photo {
+            transition: all 0.3s ease;
+        }
+        
+        .player-card:hover .player-photo {
+            transform: scale(1.1);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 15px rgba(220, 38, 38, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5); }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+            to { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Animation Delays */
+        #match-1 { animation-delay: 0.2s; }
+        #football-icon { animation-delay: 0.4s; }
+        #match-2 { animation-delay: 0.6s; }
+        #location-text { animation-delay: 0.8s; }
+        #attendance-text { animation-delay: 1s; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Sparkle Effect */
+        .sparkle {
+            position: relative;
+        }
+        
+        .sparkle::after {
+            content: "✦";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Match Card Enhancements */
+        .match-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .match-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(245, 158, 11, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .match-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Result Card Enhancements */
+        .result-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .result-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Trophy Animation */
+        .trophy {
+            animation: rotate 10s infinite linear;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
         }
     </style>
 </head>
 
-<body class="p-4 flex items-center justify-center">
-
-    <div class="w-full max-w-4xl space-y-6 mt-4 mb-4">
-        <!-- Main Title: League Name (Always visible) -->
-        <div class="text-center stadium-effect p-4 rounded-2xl bg-gradient-to-r from-green-900/30 to-blue-900/30 border border-green-500/30">
-            <h1 class="text-3xl md:text-5xl font-extrabold league-title tracking-wide mb-4">
-                دوري تل وعاوع الرياضي
-            </h1>
-                        <!-- النص الجديد -->
-           <p class="text-xl md:text-2xl font-bold text-yellow-300 mb-4 glow-text countdown-title">
-                تبدأ المباراة الأولى بعد
-            </p>
-            <!-- Countdown Timer -->
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-value" id="days">00</div>
-                    <div class="countdown-label">أيام</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="hours">00</div>
-                    <div class="countdown-label">ساعات</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="minutes">00</div>
-                    <div class="countdown-label">دقائق</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="seconds">00</div>
-                    <div class="countdown-label">ثواني</div>
+<body class="p-4">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Header Section -->
+        <header class="hero-gradient rounded-3xl p-8 text-center text-white fade-in">
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 sparkle">دوري تل وعاوع الرياضي</h1>
+                <p class="text-xl md:text-2xl font-bold mb-6">تبدأ المباراة الأولى بعد</p>
+                
+                <!-- Countdown Timer -->
+                <div class="flex justify-center gap-4 mb-6">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="text-sm">أيام</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="text-sm">ساعات</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="text-sm">دقائق</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="text-sm">ثواني</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- 1. Match 1 Card -->
-        <div class="match-card p-4 md:p-6 rounded-2xl border-l-8 border-green-500 animated-item" id="match-1">
-            <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 border-b pb-2 border-green-200/30 flex items-center">
-                <i class="fas fa-futbol ml-2 text-yellow-400"></i>     المباراة الأولى في نصف النهائي
-            </h2>
-            <div class="space-y-4 md:space-y-6">
-                <!-- Time and Date Input -->
-                <div class="text-center">
-                    <label for="time1" class="block text-sm font-medium text-green-200 mb-2">
-                        <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
-                    </label>
-<div class="time-display w-full max-w-xs mx-auto">الأربعاء 3:30 عصراً</div>
-                </div>
-                
-                <!-- Teams Input -->
-                <div class="flex flex-col sm:flex-row items-center justify-around space-y-4 md:space-y-6 sm:space-y-0">
-                    <div class="flex-1 min-w-0 text-center">
-                        <div class="team-logo-placeholder">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <label for="team1a" class="block text-base font-medium text-green-200 mb-2">الفريق الأول</label>
-                      <div class="team-name-display w-full max-w-xs mx-auto">الرياف</div>
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Matches -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Match 1 -->
+                <div class="card p-6 fade-in match-card" id="match-1">
+                    <h2 class="text-2xl font-bold mb-6 text-white section-title">المباراة الأولى</h2>
+                    <div class="text-center mb-6">
+                        <div class="text-lg font-medium text-gray-300 mb-2">التوقيت/التاريخ:</div>
+                        <div class="text-xl font-bold bg-gray-800 rounded-xl p-3 inline-block glow">الأربعاء 3:30 عصراً</div>
                     </div>
                     
-                    <div class="vs-badge pulse-animation my-2 sm:my-0">
-                        ضد
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-center flex-1 slide-in-left">
+                            <div class="team-logo">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="font-bold text-lg mb-2">الفريق الأول</div>
+                            <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">الرياف</div>
+                        </div>
+                        
+                        <div class="vs-badge pulse my-4 md:my-0">
+                            ضد
+                        </div>
+                        
+                        <div class="text-center flex-1 slide-in-right">
+                            <div class="team-logo">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="font-bold text-lg mb-2">الفريق الثاني</div>
+                            <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">الطليعي</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Football Icon -->
+                <div class="flex justify-center fade-in" id="football-icon">
+                    <div class="relative">
+                        <i class="fas fa-futbol text-5xl text-yellow-500 floating"></i>
+                    </div>
+                </div>
+                
+                <!-- Match 2 -->
+                <div class="card p-6 fade-in match-card" id="match-2">
+                    <h2 class="text-2xl font-bold mb-6 text-white section-title">المباراة الثانية</h2>
+                    <div class="text-center mb-6">
+                        <div class="text-lg font-medium text-gray-300 mb-2">التوقيت/التاريخ:</div>
+                        <div class="text-xl font-bold bg-gray-800 rounded-xl p-3 inline-block glow">الأربعاء الساعة 4:30 عصراً</div>
                     </div>
                     
-                    <div class="flex-1 min-w-0 text-center">
-                        <div class="team-logo-placeholder">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <label for="team1b" class="block text-base font-medium text-green-200 mb-2">الفريق الثاني</label>
-                        <div class="team-name-display w-full max-w-xs mx-auto">الطليعي</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 2. Football Icon Separator (Appears Second) -->
-        <div class="flex justify-center py-2 md:py-4 animated-item" id="football-icon">
-            <div class="relative">
-                <i class="fas fa-futbol text-4xl md:text-6xl text-green-400 pulse-animation"></i>
-                <div class="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4 md:w-6 md:h-6 bg-red-500 rounded-full animate-ping"></div>
-            </div>
-        </div>
-        
-        <!-- 3. Match 2 Card -->
-        <div class="match-card p-4 md:p-6 rounded-2xl border-l-8 border-green-500 animated-item" id="match-2">
-            <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 border-b pb-2 border-green-200/30 flex items-center">
-                <i class="fas fa-futbol ml-2 text-yellow-400"></i> المباراة الثانية في نصف النهائي   
-            </h2>
-
-            <div class="space-y-4 md:space-y-6">
-                <!-- Time and Date Input -->
-                <div class="text-center">
-                    <label for="time2" class="block text-sm font-medium text-green-200 mb-2">
-                        <i class="far fa-clock ml-1"></i> التوقيت/التاريخ:
-                    </label>
-                  <div class="time-display w-full max-w-xs mx-auto">الأربعاء الساعة 4:30 عصراً</div>
-                </div>
-                
-                <!-- Teams Input -->
-                <div class="flex flex-col sm:flex-row items-center justify-around space-y-4 md:space-y-6 sm:space-y-0">
-                    <div class="flex-1 min-w-0 text-center">
-                        <div class="team-logo-placeholder">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <label for="team2a" class="block text-base font-medium text-green-200 mb-2">الفريق الأول</label>
-                      <div class="team-name-display w-full max-w-xs mx-auto">الزينبية</div>
-                    </div>
-                    
-                    <div class="vs-badge pulse-animation my-2 sm:my-0">
-                        ضد
-                    </div>
-                    
-                    <div class="flex-1 min-w-0 text-center">
-                        <div class="team-logo-placeholder">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <label for="team2b" class="block text-base font-medium text-green-200 mb-2">الفريق الثاني</label>
-                       <div class="team-name-display w-full max-w-xs mx-auto">جب الأملس</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. Location Text (Appears Fourth) -->
-        <p id="location-text" class="animated-item text-lg md:text-2xl font-bold text-yellow-300 text-center pt-4 glow-text flex justify-center items-center">
-            <i class="fas fa-map-marker-alt ml-2"></i> الموقع: ملعب تلوعاوع
-        </p>
-
-        <!-- 5. Attendance Text (Appears Fifth) -->
-        <p id="attendance-text" class="animated-item text-2xl md:text-4xl font-extrabold text-white text-center glow-text pb-4 md:pb-8 pt-2 md:pt-4 stadium-effect p-4 rounded-xl">
-            <i class="fas fa-handshake mr-2"></i> حضوركم يشرفنا
-        </p>
-<!-- زر مباريات نصف النهائي -->
-<div class="text-center pt-6 animated-item">
-    <button id="semiFinalsBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
-        <i class="fas fa-flag-checkered ml-2"></i> مباريات نصف النهائي
-    </button>
-</div>
-
-<!-- قسم مباريات نصف النهائي (مخفي في البداية) -->
-<div id="semiFinalsSection" class="hidden mt-6 animated-item">
-    <div class="match-card p-6 rounded-2xl">
-        <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
-            <i class="fas fa-flag-checkered ml-2"></i> مباريات نصف النهائي
-        </h2>
-        
-        <div class="space-y-6">
-            <!-- مباراة نصف النهائي 1 -->
-            <div class="semi-final-match bg-gradient-to-l from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30">
-                <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الأولى</h3>
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="flex-1 text-center">
-                        <h4 class="font-bold text-white text-lg">الزينبية</h4>
-                        <p class="text-green-300 text-sm"></p>
-                    </div>
-                    <div class="vs-badge my-2 md:my-0">
-                        ضد
-                    </div>
-                    <div class="flex-1 text-center">
-                        <h4 class="font-bold text-white text-lg">جب الأملس</h4>
-                        <p class="text-green-300 text-sm"></p>
-                    </div>
-                </div>
-                <div class="text-center mt-2 text-gray-300">
-                    <i class="far fa-clock ml-1"></i> اليوم 3:30              </div>
-            </div>
-
-            <!-- مباراة نصف النهائي 2 -->
-            <div class="semi-final-match bg-gradient-to-l from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30">
-                <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الثانية</h3>
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="flex-1 text-center">
-                        <h4 class="font-bold text-white text-lg">الزينبية-</h4>
-                        <p class="text-green-300 text-sm"></p>
-                    </div>
-                    <div class="vs-badge my-2 md:my-0">
-                        ضد
-                    </div>
-                    <div class="flex-1 text-center">
-                        <h4 class="font-bold text-white text-lg">جب الأملس</h4>
-                        <p class="text-green-300 text-sm"></p>
-                    </div>
-                </div>
-                <div class="text-center mt-2 text-gray-300">
-                    <i class="far fa-clock ml-1"></i>       اليوم 4:30        </div>
-            </div>
-        </div>
-
-        <!-- زر إغلاق -->
-        <div class="text-center mt-6">
-            <button id="closeSemiFinalsBtn" class="btn-secondary py-2 px-6">
-                <i class="fas fa-times ml-2"></i> إغلاق
-            </button>
-        </div>
-    </div>
-</div>
-        <!-- زر مباريات ربع النهائي -->
-        <div class="text-center pt-6 animated-item">
-            <button id="quarterFinalsBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
-                <i class="fas fa-trophy ml-2"></i> مباريات ربع النهائي
-            </button>
-        </div>
-
-        <!-- قسم مباريات ربع النهائي (مخفي في البداية) -->
-        <div id="quarterFinalsSection" class="hidden mt-6 animated-item">
-            <div class="match-card p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
-                    <i class="fas fa-flag ml-2"></i> مباريات ربع النهائي
-                </h2>
-                
-                <div class="space-y-6">
-                    <!-- مباراة ربع النهائي 1 -->
-                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
-                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الأولى</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">شباب أرزونة</h4>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-center flex-1 slide-in-left">
+                            <div class="team-logo">
+                                <i class="fas fa-users"></i>
                             </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
+                            <div class="font-bold text-lg mb-2">الفريق الأول</div>
+                            <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">الزينبية</div>
+                        </div>
+                        
+                        <div class="vs-badge pulse my-4 md:my-0">
+                            ضد
+                        </div>
+                        
+                        <div class="text-center flex-1 slide-in-right">
+                            <div class="team-logo">
+                                <i class="fas fa-users"></i>
                             </div>
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">الزينبية</h4>
-                                <p class="text-green-300 text-sm">4 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الخميس 16-10-2025
-                        </div>
-                    </div>
-
-                    <!-- مباراة ربع النهائي 2 -->
-                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
-                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثانية</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">السودة</h4>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">الرياف</h4>
-                                <p class="text-green-300 text-sm">4 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
-                        </div>
-                    </div>
-
-                    <!-- مباراة ربع النهائي 3 -->
-                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
-                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثالثة</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">جب الأملس</h4>
-                                <p class="text-green-300 text-sm">7 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">حبرون</h4>
-                                <p class="text-green-300 text-sm">0 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
-                        </div>
-                    </div>
-
-                    <!-- مباراة ربع النهائي 4 -->
-                    <div class="quarter-final-match bg-gradient-to-l from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30">
-                        <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الرابعة</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">تلوعاوع</h4>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h4 class="font-bold text-white text-lg">الطليعي</h4>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i>الأثنين 20-10-2025
-                        </div>
-                    </div>
-                </div>
-الفرق المتأهلة لنصف النهائي: الزينبية- جب الأملس-الرياف- الطليعي
-                <!-- زر إغلاق -->
-                <div class="text-center mt-6">
-                    <button id="closeQuarterFinalsBtn" class="btn-secondary py-2 px-6">
-                        <i class="fas fa-times ml-2"></i> إغلاق
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- زر جدول نقاط الفرق -->
-        <div class="text-center pt-6 animated-item">
-            <button id="standingsBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
-                <i class="fas fa-table ml-2"></i> جدول نقاط الفرق
-            </button>
-        </div>
-
-        <!-- قسم جدول نقاط الفرق (مخفي في البداية) -->
-         <div id="standingsSection" class="hidden mt-6 animated-item">
-            <div class="match-card p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
-                    <i class="fas fa-trophy ml-2"></i> جدول ترتيب الفرق
-                </h2>
-                
-                <div class="overflow-x-auto">
-                    <table class="standings-table">
-                        <thead>
-                            <tr>
-                                <th>المركز</th>
-                                <th class="text-right">الفريق</th>
-                                <th>ل</th>
-                                <th>ف</th>
-                                <th>ت</th>
-                                <th>خ</th>
-                                <th>له</th>
-                                <th>عليه</th>
-                                <th>+/-</th>
-                                <th>ن</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                
-                                <td><span class="position-badge position-1">1</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-green-400"></i>
-                                    <span>جب الأملس</span>
-                                </td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>10</td>
-                                <td>1</td>
-                                <td>+9</td>
-                                <td class="font-bold">9</td>
-                            </tr>
-                            <tr>
-                                <td><span class="position-badge position-2">2</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-yellow-400"></i>
-                                    <span>الزينبية</span>
-                                </td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>14</td>
-                                <td>2</td>
-                                <td>+12</td>
-                                <td class="font-bold">7</td>
-                            </tr>
-                            <tr>+
-
-<td><span class="position-badge position-3">3</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-blue-400"></i>
-                                    <span>الطليعي</span>
-                                </td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>8</td>
-                                <td>0</td>
-                                <td>+8</td>
-                                <td class="font-bold">7</td>
-                            </tr>
-                            <tr>
- <td><span class="position-badge position-other">4</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-gray-400"></i>
-                                    <span>السودة</span>
-                                </td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>6</td>
-                                <td>2</td>
-                                <td>+4</td>
-                                <td class="font-bold">7</td>
-                            </tr>
-                            <tr>
-
-<td><span class="position-badge position-other">5</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-purple-400"></i>
-                                    <span>الرياف</span>
-                                </td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>0</td>
-                                <td class="font-bold">4</td>
-                            </tr>
-                            <tr>
-
- <td><span class="position-badge position-other">6</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-pink-400"></i>
-                                    <span>تلوعاوع</span>
-                                </td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>-1</td>
-                                <td class="font-bold">4</td>
-                            </tr>
-                            <tr>
-
-<td><span class="position-badge position-other">7</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-teal-400"></i>
-                                    <span>شباب أرزونة</span>
-                                </td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>-1</td>
-                                <td class="font-bold">4</td>
-                            </tr>
-                            <tr>
-                                <td><span class="position-badge position-other">8</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-red-400"></i>
-                                    <span>حبرون</span>
-                                </td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>2</td>
-                                <td>5</td>
-                                <td>14</td>
-                                <td>-9</td>
-                                <td class="font-bold">3</td>
-                            </tr>
-                            <tr>
-                                
-                                <td><span class="position-badge position-other">9</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-orange-400"></i>
-                                    <span>الصفصافة</span>
-                                </td>
-                                <td>3</td>
-                                <td>0</td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>4</td>
-                                <td>9</td>
-                                <td>-5</td>
-                                <td class="font-bold">2</td>
-                            </tr>
-                            <tr>
-                               
-                                <td><span class="position-badge position-other">10</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-indigo-400"></i>
-                                    <span>أرزونة</span>
-                                </td>
-                                <td>3</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>5</td>
-                                <td>-2</td>
-                                <td class="font-bold">1</td>
-                            </tr>
-                            <tr>
-                                
-                                
-                               
-                                <td><span class="position-badge position-other">11</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-teal-400"></i>
-                                    <span>شباب الطليعي</span>
-                                </td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>7</td>
-                                <td>-4</td>
-                                <td class="font-bold">1</td>
-                            </tr>
-                            <tr>
-
-                                <td><span class="position-badge position-other">12</span></td>
-                                <td class="team-cell">
-                                    <i class="fas fa-users text-gray-400"></i>
-                                    <span>ناحوت</span>
-                                </td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>12</td>
-                                <td>-11</td>
-                                <td class="font-bold">0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="mt-4 text-sm text-gray-300">
-                    <p class="mb-2"><span class="font-bold">رموز الجدول:</span></p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                        <div class="flex items-center">
-                            <span class="ml-2">ل: لعب</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">ف: فوز</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">ت: تعادل</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">خ: خسارة</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">له: أهداف سجلها</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">عليه: أهداف استقبلها</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">+/-: فارق الأهداف</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="ml-2">ن: نقاط</span>
+                            <div class="font-bold text-lg mb-2">الفريق الثاني</div>
+                            <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">جب الأملس</div>
                         </div>
                     </div>
                 </div>
-
-                <!-- زر إغلاق -->
-                <div class="text-center mt-6">
-                    <button id="closeStandingsBtn" class="btn-secondary py-2 px-6">
-                        <i class="fas fa-times ml-2"></i> إغلاق
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- زر أفضل اللاعبين -->
-        <div class="text-center pt-6 animated-item">
-            <button id="bestPlayersBtn" class="btn-primary w-full py-4 text-lg pulse-animation">
-                <i class="fas fa-trophy ml-2"></i> أفضل اللاعبين حتى الآن في دوري تلوعاوع
-            </button>
-        </div>
-
-        <!-- قسم أفضل اللاعبين (مخفي في البداية) -->
-        <div id="bestPlayersSection" class="hidden mt-6 animated-item">
-            <div class="match-card p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
-                    <i class="fas fa-crown ml-2"></i> نجوم البطولة
-                </h2>
                 
-                <div class="players-grid grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <!-- اللاعب 1 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
-            <img src="images/player1.jpg" alt="محمد أحمد" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRkQxNjYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">أحمد قاطرجي</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> تلوعاوع
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 2 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-blue-400">
-            <img src="images/player2.jpg" alt="أحمد الحسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM2MEExRkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">علي جبيلي</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i>السودة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 3 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-red-400">
-            <img src="images/player3.jpg" alt="خالد إبراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjYwNjAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">علي سليمان</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> أرزونة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 4 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-green-400">
-            <img src="images/player4.jpg" alt="محمود العلي" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxMEJFOTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">رامي حسين</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> جب الأملس
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 5 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400">
-            <img src="images/player5.jpg" alt="ياسر محمد" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNBOjQ3RkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">حسين مصطفى</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> الرياف
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 6 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-cyan-400">
-            <img src="images/player6.jpg" alt="عمر الفارس" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwMEVERTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">حسين ديبوش</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> الزينبية
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 7 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-indigo-400">
-            <img src="images/player6.jpg" alt="عمر الفارس" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM1QjY4RjgiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">محمود الشمالي</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> الطليعي
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 8 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-teal-400">
-            <img src="images/player6.jpg" alt="ابراهيم حسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxRGI5QjciLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">ابراهيم حسين</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> جب الأملس
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 9 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-amber-400">
-            <img src="images/player6.jpg" alt="الحارس محمد سلهب" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGOUI4MDgiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">الحارس محمد سلهب</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> تلوعاوع
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 10 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-lime-400 to-lime-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-lime-400">
-            <img src="images/player6.jpg" alt="وفيق ابراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM4NUMwNzQiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">وفيق ابراهيم</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> حبرون
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 11 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-emerald-400">
-            <img src="images/player6.jpg" alt="ليث ابراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMzNEE5NjciLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">ليث ابراهيم</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> حبرون
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 12 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-violet-400 to-violet-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-violet-400">
-            <img src="images/player6.jpg" alt="محمد علي" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM4QjVDREYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">محمد علي</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> رجال الصفصافة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 13 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-fuchsia-400">
-            <img src="images/player6.jpg" alt="ابراهيم ديب" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNEOjI0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">ابراهيم ديب</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> رجال الصفصافة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 14 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-rose-400">
-            <img src="images/player6.jpg" alt="عزام محمد" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGNDM3NTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">عزام محمد</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> السودة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 15 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-sky-400 to-sky-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-sky-400">
-            <img src="images/player6.jpg" alt="ليث خضر" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwOENBNEYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">ليث خضر</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> شباب الطليعي
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 16 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-orange-400">
-            <img src="images/player6.jpg" alt="محمود الرضوان" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGOTczMDkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">محمود الرضوان</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> شباب أرزونة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 17 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-pink-400">
-            <img src="images/player6.jpg" alt="علي عبد الرحمن" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjk0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3S2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">علي عبد الرحمن</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> شباب أرزونة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 18 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-cyan-400">
-            <img src="images/player6.jpg" alt="أبو حيدر" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwMEVERTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">أبو حيدر</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> أرزونة
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 19 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400">
-            <img src="images/player6.jpg" alt="محمد مرداش" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNBOjQ3RkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">محمد مرداش</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> الطليعي
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- اللاعب 20 -->
-<div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
-    <div class="flex items-center space-x-3 space-x-reverse">
-        <div class="player-photo w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-green-400">
-            <img src="images/player6.jpg" alt="أحمد حسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxMEJFOTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
-        </div>
-        <div class="flex-1">
-            <h3 class="font-bold text-white text-lg">أحمد حسين</h3>
-            <p class="text-green-300 text-sm flex items-center">
-                <i class="fas fa-users ml-1"></i> الزينبية
-            </p>
-        </div>
-    </div>
-</div>
-
-
-
-                </div>
-
-                <!-- زر إغلاق -->
-                <div class="text-center mt-6">
-                    <button id="closePlayersBtn" class="btn-secondary py-2 px-6">
-                        <i class="fas fa-times ml-2"></i> إغلاق
-                    </button>
-                </div>
-        
-        </div>
-
-        </div>
-
-        <!-- زر نتائج المباريات السابقة -->
-        <div class="text-center pt-6 animated-item">
-            <button id="previousResultsBtn" class="btn-accent w-full py-4 text-lg pulse-animation">
-                <i class="fas fa-history ml-2"></i> نتائج المباريات السابقة
-            </button>
-        </div>
-
-        <!-- قسم نتائج المباريات السابقة (مخفي في البداية) -->
-        <div id="previousResultsSection" class="hidden mt-6 animated-item">
-             <div class="match-card p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold mb-6 text-yellow-400 text-center border-b pb-3 border-yellow-200/30">
-                    <i class="fas fa-trophy ml-2"></i> نتائج المباريات السابقة
-                </h2>
-                
+                <!-- Location & Attendance -->
                 <div class="space-y-4">
-   <!-- نتيجة مباراة 1 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الزينبية</h3>
-                                <p class="text-green-300 text-sm">8 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">حبرون</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
+                    <p class="text-xl font-bold text-center text-yellow-400 fade-in" id="location-text">
+                        <i class="fas fa-map-marker-alt ml-2"></i> الموقع: ملعب تلوعاوع
+                    </p>
+                    <p class="text-3xl font-extrabold text-center text-white fade-in bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl bounce" id="attendance-text">
+                        <i class="fas fa-handshake mr-2"></i> حضوركم يشرفنا
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Right Column - Navigation & Quick Actions -->
+            <div class="space-y-6">
+                <!-- Navigation Cards -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-4 text-white section-title">تصفح الدوري</h3>
+                    <div class="space-y-4">
+                        <button id="semiFinalsBtn" class="btn-primary w-full text-lg flex items-center justify-center">
+                            <i class="fas fa-flag-checkered ml-2"></i> مباريات نصف النهائي
+                        </button>
+                        
+                        <button id="quarterFinalsBtn" class="btn-primary w-full text-lg flex items-center justify-center">
+                            <i class="fas fa-trophy ml-2 trophy"></i> مباريات ربع النهائي
+                        </button>
+                        
+                        <button id="standingsBtn" class="btn-primary w-full text-lg flex items-center justify-center">
+                            <i class="fas fa-table ml-2"></i> جدول نقاط الفرق
+                        </button>
+                        
+                        <button id="bestPlayersBtn" class="btn-primary w-full text-lg flex items-center justify-center">
+                            <i class="fas fa-crown ml-2"></i> أفضل اللاعبين
+                        </button>
+                        
+                        <button id="previousResultsBtn" class="btn-primary w-full text-lg flex items-center justify-center">
+                            <i class="fas fa-history ml-2"></i> نتائج مباريات المجموعات
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quick Info -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-4 text-white section-title">معلومات سريعة</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span>عدد الفرق:</span>
+                            <span class="font-bold gradient-text">12 فريق</span>
                         </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأربعاء 15-10-2025
+                        <div class="flex justify-between">
+                            <span>المباريات المقبلة:</span>
+                            <span class="font-bold gradient-text">2 مباراة</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>المتصدر:</span>
+                            <span class="font-bold gradient-text">جب الأملس</span>
                         </div>
                     </div>
-
-  <!-- نتيجة مباراة 1 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">السودة</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">أرزونة</h3>
-                                <p class="text-green-300 text-sm">1 أهداف</p>
-                            </div>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-4 text-white section-title">تواصل معنا</h3>
+                    <div class="space-y-4">
+                        <a href="https://www.facebook.com/share/1HPJB7pTow/" 
+                           target="_blank"
+                           class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-105">
+                            <i class="fab fa-facebook ml-2 text-xl"></i>
+                            صفحة الدوري على فيسبوك
+                        </a>
+                        
+                        <a href="https://api.whatsapp.com/send?phone=963991363913" 
+                           target="_blank"
+                           class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-105">
+                            <i class="fab fa-whatsapp ml-2 text-xl"></i>
+                            تواصل مع المصمم
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hidden Sections -->
+        
+        <!-- Semi Finals Section -->
+        <div id="semiFinalsSection" class="hidden card p-6 mt-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-white section-title">مباريات نصف النهائي</h2>
+            <div class="space-y-6">
+                <!-- Semi Final 1 -->
+                <div class="bg-gradient-to-r from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الأولى</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">الزينبية</h4>
                         </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأربعاء 15-10-2025
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">جب الأملس</h4>
                         </div>
                     </div>
-
-
-
-
-
-
-
-                    <!-- نتيجة مباراة 1 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الزينبية</h3>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الطليعي</h3>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأحد 12-10-2025
-                        </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> اليوم 3:30
                     </div>
-
-
-                    <!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">أرزونة</h3>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">شباب أرزونة</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأحد 12-10-2025
-                        </div>
-                    </div>
-                    <!-- نتيجة مباراة 3 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الصفصافة</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">شباب لطليعي</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i>  الأحد 12-10-2025
-                        </div>
-                    </div>
-<!-- نتيجة مباراة 4 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">السودة</h3>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> السبت 11-10-2025
-                        </div>
-                    </div>
-
-<!-- نتيجة مباراة 5-->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الصفصافة</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الرياف</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i>السبت 11-10-2025
-                        </div>
-                    </div>
-
-                    <!-- نتيجة مباراة 6-->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">حبرون</h3>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">ناحوت</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الجمعة 10-10-2025
-                        </div>
-                    </div>
-
-<!-- نتيجة مباراة 7 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">شباب أرزونة</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الجمعة 10-10-2025
-                        </div>
-                    </div>
-
-
-                    <!-- نتيجة مباراة 8-->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">جب الأملس</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الرياف</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الخميس 9-10-2025
-                        </div>
-                    </div>
-
-<!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الطليعي</h3>
-                                <p class="text-green-300 text-sm">5 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">حبرون</h3>
-                                <p class="text-green-300 text-sm">0 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i>الخميس 9-10-2025
-                        </div>
-                    </div>
-<!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الزينبية</h3>
-                                <p class="text-green-300 text-sm">6 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">ناحوت</h3>
-                                <p class="text-green-300 text-sm">0 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الثلاثاء 7-10-2025
-                        </div>
-                    </div>
-<!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">شباب الطليعي</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الرياف</h3>
-                                <p class="text-green-300 text-sm">2 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الثلاثاء 7-10-2025
-                        </div>
-                    </div>
-<!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الصفصافة</h3>
-                                <p class="text-green-300 text-sm">0 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">جب الأملس</h3>
-                                <p class="text-green-300 text-sm">5 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الاثنين 6-10-2025
-                        </div>
-                    </div>
-
-
-                    
-                    <!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">السودة</h3>
-                                <p class="text-green-300 text-sm">1 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg"> شباب أرزونة</h3>
-                                <p class="text-green-300 text-sm">1 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i>الاثنين 6-10-2025
-                        </div>
-                         
-                    </div>
-                    
-<!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg"> أرزونة</h3>
-                                <p class="text-green-300 text-sm">2 أهداف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> الأحد 5-10-2025
-                                                </div>
-                    </div>
-
-  
-                    <!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">جب الأملس</h3>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg"> شباب الطليعي</h3>
-                                <p class="text-green-300 text-sm">0 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> غاب فريق شباب الطليعي فسجّلت النتيجة خساره له
-                        </div>
-                         
-                    </div>
-  <!-- نتيجة مباراة 2 -->
-                    <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
-                        <div class="flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg">الطليعي</h3>
-                                <p class="text-green-300 text-sm">3 أهداف</p>
-                            </div>
-                            <div class="vs-badge my-2 md:my-0">
-                                ضد
-                            </div>
-                            <div class="flex-1 text-center">
-                                <h3 class="font-bold text-white text-lg"> ناحوت</h3>
-                                <p class="text-green-300 text-sm">0 هدف</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2 text-gray-300">
-                            <i class="far fa-clock ml-1"></i> غاب فريق ناحوت فسجّلت النتيجة خساره له
-                        </div>
-                         
-                    </div>
-
-دوري المجموعات
-
                 </div>
 
-                <!-- زر إغلاق -->
-                <div class="text-center mt-6">
-                    <button id="closeResultsBtn" class="btn-secondary py-2 px-6">
-                        <i class="fas fa-times ml-2"></i> إغلاق
-                    </button>
+                <!-- Semi Final 2 -->
+                <div class="bg-gradient-to-r from-orange-900/30 to-red-900/30 p-4 rounded-xl border border-orange-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-orange-300">مباراة نصف النهائي الثانية</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">الزينبية-</h4>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">جب الأملس</h4>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> اليوم 4:30
+                    </div>
                 </div>
-            
-            
+            </div>
+
+            <div class="text-center mt-6">
+                <button id="closeSemiFinalsBtn" class="btn-secondary py-2 px-6">
+                    <i class="fas fa-times ml-2"></i> إغلاق
+                </button>
             </div>
         </div>
 
-        <!-- رابط صفحة الفيسبوك -->
-        <div class="text-center pt-4">
-            <a href="https://www.facebook.com/share/1HPJB7pTow/" 
-               target="_blank"
-               class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
-                <i class="fab fa-facebook ml-2 text-xl"></i>
-                صفحة الدوري على فيسبوك
-            </a>
+        <!-- Quarter Finals Section -->
+        <div id="quarterFinalsSection" class="hidden card p-6 mt-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-white section-title">مباريات ربع النهائي</h2>
+            
+            <div class="space-y-6">
+                <!-- Quarter Final 1 -->
+                <div class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الأولى</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">شباب أرزونة</h4>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">الزينبية</h4>
+                            <p class="text-green-300 text-sm">4 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الخميس 16-10-2025
+                    </div>
+                </div>
+
+                <!-- Quarter Final 2 -->
+                <div class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثانية</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">السودة</h4>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">الرياف</h4>
+                            <p class="text-green-300 text-sm">4 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
+                    </div>
+                </div>
+
+                <!-- Quarter Final 3 -->
+                <div class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الثالثة</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">جب الأملس</h4>
+                            <p class="text-green-300 text-sm">7 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">حبرون</h4>
+                            <p class="text-green-300 text-sm">0 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأحد 19-10-2025
+                    </div>
+                </div>
+
+                <!-- Quarter Final 4 -->
+                <div class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30 result-card">
+                    <h3 class="text-lg font-bold text-center mb-4 text-purple-300">مباراة ربع النهائي الرابعة</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">تلوعاوع</h4>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h4 class="font-bold text-white text-lg">الطليعي</h4>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i>الأثنين 20-10-2025
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 text-yellow-300 font-bold">
+                الفرق المتأهلة لنصف النهائي: الزينبية- جب الأملس-الرياف- الطليعي
+            </div>
+
+            <div class="text-center mt-6">
+                <button id="closeQuarterFinalsBtn" class="btn-secondary py-2 px-6">
+                    <i class="fas fa-times ml-2"></i> إغلاق
+                </button>
+            </div>
         </div>
 
-        <!-- زر تواصل معنا -->
-        <div class="text-center pt-4">
-            <a href="https://wa.me/+963991363913" 
-               target="_blank"
-               class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 animated-item">
-                <i class="fab fa-whatsapp ml-2 text-xl"></i>
-                لطلب تصميم موقع تواصل معنا عبر واتساب
-            </a>
+        <!-- Standings Section -->
+        <div id="standingsSection" class="hidden card p-6 mt-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-white section-title">جدول ترتيب الفرق</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="py-3 px-2 text-center">المركز</th>
+                            <th class="py-3 px-2 text-right">الفريق</th>
+                            <th class="py-3 px-2 text-center">ل</th>
+                            <th class="py-3 px-2 text-center">ف</th>
+                            <th class="py-3 px-2 text-center">ت</th>
+                            <th class="py-3 px-2 text-center">خ</th>
+                            <th class="py-3 px-2 text-center">له</th>
+                            <th class="py-3 px-2 text-center">عليه</th>
+                            <th class="py-3 px-2 text-center">+/-</th>
+                            <th class="py-3 px-2 text-center">ن</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-1">1</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-green-400"></i>
+                                <span>جب الأملس</span>
+                            </td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>10</td>
+                            <td>1</td>
+                            <td>+9</td>
+                            <td class="font-bold">9</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-2">2</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-yellow-400"></i>
+                                <span>الزينبية</span>
+                            </td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>14</td>
+                            <td>2</td>
+                            <td>+12</td>
+                            <td class="font-bold">7</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-3">3</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-blue-400"></i>
+                                <span>الطليعي</span>
+                            </td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>8</td>
+                            <td>0</td>
+                            <td>+8</td>
+                            <td class="font-bold">7</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">4</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-gray-400"></i>
+                                <span>السودة</span>
+                            </td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>+4</td>
+                            <td class="font-bold">7</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">5</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-purple-400"></i>
+                                <span>الرياف</span>
+                            </td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td class="font-bold">4</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">6</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-pink-400"></i>
+                                <span>تلوعاوع</span>
+                            </td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>-1</td>
+                            <td class="font-bold">4</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">7</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-teal-400"></i>
+                                <span>شباب أرزونة</span>
+                            </td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>-1</td>
+                            <td class="font-bold">4</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">8</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-red-400"></i>
+                                <span>حبرون</span>
+                            </td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>5</td>
+                            <td>14</td>
+                            <td>-9</td>
+                            <td class="font-bold">3</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">9</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-orange-400"></i>
+                                <span>الصفصافة</span>
+                            </td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td>9</td>
+                            <td>-5</td>
+                            <td class="font-bold">2</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">10</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-indigo-400"></i>
+                                <span>أرزونة</span>
+                            </td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>-2</td>
+                            <td class="font-bold">1</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">11</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-teal-400"></i>
+                                <span>شباب الطليعي</span>
+                            </td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>7</td>
+                            <td>-4</td>
+                            <td class="font-bold">1</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="position-badge position-other">12</span></td>
+                            <td class="team-cell">
+                                <i class="fas fa-users text-gray-400"></i>
+                                <span>ناحوت</span>
+                            </td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>12</td>
+                            <td>-11</td>
+                            <td class="font-bold">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-6 text-sm text-gray-300">
+                <p class="mb-2 font-bold">رموز الجدول:</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <div class="flex items-center">
+                        <span class="ml-2">ل: لعب</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">ف: فوز</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">ت: تعادل</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">خ: خسارة</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">له: أهداف سجلها</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">عليه: أهداف استقبلها</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">+/-: فارق الأهداف</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="ml-2">ن: نقاط</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button id="closeStandingsBtn" class="btn-secondary py-2 px-6">
+                    <i class="fas fa-times ml-2"></i> إغلاق
+                </button>
+            </div>
         </div>
 
-        <!-- Copyright Section -->
-        <div class="text-center pt-4 border-t border-gray-700/50 mt-4">
+        <!-- Best Players Section -->
+        <div id="bestPlayersSection" class="hidden card p-6 mt-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-white section-title">نجوم البطولة</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Player 1 -->
+                <div class="player-card bg-gradient-to-r from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
+                            <img src="images/player1.jpg" alt="أحمد قاطرجي" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRkQxNjYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">أحمد قاطرجي</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> تلوعاوع
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              
+                <!-- اللاعب 2 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-blue-400">
+                            <img src="images/player2.jpg" alt="أحمد الحسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM2MEExRkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">علي جبيلي</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i>السودة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 3 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-red-400">
+                            <img src="images/player3.jpg" alt="خالد إبراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjYwNjAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">علي سليمان</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> أرزونة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 4 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-green-400">
+                            <img src="images/player4.jpg" alt="محمود العلي" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxMEJFOTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">رامي حسين</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> جب الأملس
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 5 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400">
+                            <img src="images/player5.jpg" alt="ياسر محمد" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNBOjQ3RkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">حسين مصطفى</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> الرياف
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 6 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-cyan-400">
+                            <img src="images/player6.jpg" alt="عمر الفارس" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwMEVERTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">حسين ديبوش</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> الزينبية
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 7 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-indigo-400">
+                            <img src="images/player6.jpg" alt="عمر الفارس" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM1QjY4RjgiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">محمود الشمالي</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> الطليعي
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 8 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-teal-400">
+                            <img src="images/player6.jpg" alt="ابراهيم حسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxRGI5QjciLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">ابراهيم حسين</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> جب الأملس
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 9 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-amber-400">
+                            <img src="images/player6.jpg" alt="الحارس محمد سلهب" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGOUI4MDgiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">الحارس محمد سلهب</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> تلوعاوع
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 10 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-lime-400 to-lime-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-lime-400">
+                            <img src="images/player6.jpg" alt="وفيق ابراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM4NUMwNzQiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">وفيق ابراهيم</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> حبرون
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 11 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-emerald-400">
+                            <img src="images/player6.jpg" alt="ليث ابراهيم" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMzNEE5NjciLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">ليث ابراهيم</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> حبرون
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 12 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-violet-400 to-violet-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-violet-400">
+                            <img src="images/player6.jpg" alt="محمد علي" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiM4QjVDREYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">محمد علي</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> رجال الصفصافة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 13 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-fuchsia-400">
+                            <img src="images/player6.jpg" alt="ابراهيم ديب" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNEOjI0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">ابراهيم ديب</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> رجال الصفصافة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 14 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-rose-400">
+                            <img src="images/player6.jpg" alt="عزام محمد" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGNDM3NTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">عزام محمد</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> السودة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 15 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-sky-400 to-sky-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-sky-400">
+                            <img src="images/player6.jpg" alt="ليث خضر" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwOENBNEYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">ليث خضر</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> شباب الطليعي
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 16 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-orange-400">
+                            <img src="images/player6.jpg" alt="محمود الرضوان" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGOTczMDkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">محمود الرضوان</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> شباب أرزونة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 17 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-pink-400">
+                            <img src="images/player6.jpg" alt="علي عبد الرحمن" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNGRjk0QzMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">علي عبد الرحمن</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> شباب أرزونة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 18 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-cyan-400">
+                            <img src="images/player6.jpg" alt="أبو حيدر" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMwMEVERTkiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">أبو حيدر</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> أرزونة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 19 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-purple-400">
+                            <img src="images/player6.jpg" alt="محمد مرداش" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiNBOjQ3RkYiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">محمد مرداش</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> الطليعي
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اللاعب 20 -->
+                <div class="player-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="player-photo w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center overflow-hidden border-2 border-green-400">
+                            <img src="images/player6.jpg" alt="أحمد حسين" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxMEJFOTAiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iOCIgZmlsbD0iIzBBNTlDMCIvPgo8cGF0aCBkPSJNMTYgNTZDMjEuMzMzIDQ0IDQyLjY2NyA0NCA0OCA1NiIgZmlsbD0iIzBBNTlDMCIvPgo8L3N2Zz4K'">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white text-lg">أحمد حسين</h3>
+                            <p class="text-green-300 text-sm flex items-center">
+                                <i class="fas fa-users ml-1"></i> الزينبية
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button id="closePlayersBtn" class="btn-secondary py-2 px-6">
+                    <i class="fas fa-times ml-2"></i> إغلاق
+                </button>
+            </div>
+        </div>
+
+        <!-- Previous Results Section -->
+        <div id="previousResultsSection" class="hidden card p-6 mt-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-white section-title">نتائج مباريات المجموعات</h2>
+            
+            <div class="space-y-4">
+                <!-- Result 1 -->
+                <div class="bg-gradient-to-r from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30 result-card">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الزينبية</h3>
+                            <p class="text-green-300 text-sm">8 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">حبرون</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأربعاء 15-10-2025
+                    </div>
+                </div>
+            
+                <!-- نتيجة مباراة 1 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">السودة</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">أرزونة</h3>
+                            <p class="text-green-300 text-sm">1 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأربعاء 15-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 1 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الزينبية</h3>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الطليعي</h3>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأحد 12-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">أرزونة</h3>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">شباب أرزونة</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأحد 12-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 3 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الصفصافة</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">شباب لطليعي</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i>  الأحد 12-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 4 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">السودة</h3>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> السبت 11-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 5-->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الصفصافة</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الرياف</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i>السبت 11-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 6-->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">حبرون</h3>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">ناحوت</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الجمعة 10-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 7 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">شباب أرزونة</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الجمعة 10-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 8-->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">جب الأملس</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الرياف</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الخميس 9-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الطليعي</h3>
+                            <p class="text-green-300 text-sm">5 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">حبرون</h3>
+                            <p class="text-green-300 text-sm">0 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i>الخميس 9-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الزينبية</h3>
+                            <p class="text-green-300 text-sm">6 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">ناحوت</h3>
+                            <p class="text-green-300 text-sm">0 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الثلاثاء 7-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">شباب الطليعي</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الرياف</h3>
+                            <p class="text-green-300 text-sm">2 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الثلاثاء 7-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الصفصافة</h3>
+                            <p class="text-green-300 text-sm">0 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">جب الأملس</h3>
+                            <p class="text-green-300 text-sm">5 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الاثنين 6-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">السودة</h3>
+                            <p class="text-green-300 text-sm">1 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg"> شباب أرزونة</h3>
+                            <p class="text-green-300 text-sm">1 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i>الاثنين 6-10-2025
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">تلوعاوع</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg"> أرزونة</h3>
+                            <p class="text-green-300 text-sm">2 أهداف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> الأحد 5-10-2025
+                    </div>
+                </div>
+
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">جب الأملس</h3>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg"> شباب الطليعي</h3>
+                            <p class="text-green-300 text-sm">0 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> غاب فريق شباب الطليعي فسجّلت النتيجة خساره له
+                    </div>
+                </div>
+                
+                <!-- نتيجة مباراة 2 -->
+                <div class="result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg">الطليعي</h3>
+                            <p class="text-green-300 text-sm">3 أهداف</p>
+                        </div>
+                        <div class="vs-badge my-2 md:my-0">
+                            ضد
+                        </div>
+                        <div class="flex-1 text-center">
+                            <h3 class="font-bold text-white text-lg"> ناحوت</h3>
+                            <p class="text-green-300 text-sm">0 هدف</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2 text-gray-300">
+                        <i class="far fa-clock ml-1"></i> غاب فريق ناحوت فسجّلت النتيجة خساره له
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button id="closeResultsBtn" class="btn-secondary py-2 px-6">
+                    <i class="fas fa-times ml-2"></i> إغلاق
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center pt-8 border-t border-gray-700/50 mt-8">
             <p class="text-gray-400 text-sm">
                 حقوق النشر محفوظة &copy; <span class="text-yellow-400">Yazan Salm</span>
             </p>
-        </div>
+        </footer>
     </div>
 
     <!-- JavaScript -->
     <script>
-       function updateCountdown() {
-    // الحصول على الوقت الحالي
-    const now = new Date();
-    
-    // إنشاء تاريخ مستهدف (3:00 مساءً اليوم)
-    const targetFirstMatch = new Date();
-    targetFirstMatch.setHours(15, 30, 0, 0); // 3:00 مساءً
-    
-    // إنشاء تاريخ مستهدف للمباراة الثانية (4:00 مساءً)
-    const targetSecondMatch = new Date();
-    targetSecondMatch.setHours(16, 30, 0, 0); // 4:00 مساءً
-    
-    const countdownElement = document.querySelector('.countdown');
-    const match1Element = document.getElementById('match-1');
-    const match2Element = document.getElementById('match-2');
-    const countdownTitle = document.querySelector('.countdown-title');
-    
-    // إذا كانت الساعة قبل 3:00 مساءً
-    if (now < targetFirstMatch) { 
-        // العد التنازلي للمباراة الأولى
-        const timeDiff = targetFirstMatch - now;
-        updateDisplay(timeDiff);
-        countdownTitle.textContent = "تبدأ المباراة الأولى بعد";
-        match1Element.style.opacity = "1";
-        match2Element.style.opacity = "0.5"; 
-    }
-    // إذا كانت بين 3:00 و 4:00 مساءً
-    else if (now >= targetFirstMatch && now < targetSecondMatch) {
-        // عرض رسالة بدء المباراة الأولى والعد التنازلي للمباراة الثانية
-        const timeDiff = targetSecondMatch - now;
-        updateDisplay(timeDiff);
-        countdownTitle.textContent = "بدأت المباراة الأولى - تبدأ المباراة الثانية بعد";
-        match1Element.style.opacity = "0.8";
-        match2Element.style.opacity = "1";
-        
-        // إضافة رسالة خاصة للمباراة الأولى
-        const match1TimeElement = match1Element.querySelector('.time-display');
-        if (match1TimeElement) {
-            match1TimeElement.innerHTML = "بدأت المباراة <span style='color: var(--accent-color);'>🔥</span>";
+        function updateCountdown() {
+            const now = new Date();
+            
+            const targetFirstMatch = new Date();
+            targetFirstMatch.setHours(15, 30, 0, 0);
+            
+            const targetSecondMatch = new Date();
+            targetSecondMatch.setHours(16, 30, 0, 0);
+            
+            const match1Element = document.getElementById('match-1');
+            const match2Element = document.getElementById('match-2');
+            const countdownTitle = document.querySelector('.countdown-title');
+            
+            if (now < targetFirstMatch) { 
+                const timeDiff = targetFirstMatch - now;
+                updateDisplay(timeDiff);
+                match1Element.style.opacity = "1";
+                match2Element.style.opacity = "0.5"; 
+            }
+            else if (now >= targetFirstMatch && now < targetSecondMatch) {
+                const timeDiff = targetSecondMatch - now;
+                updateDisplay(timeDiff);
+                match1Element.style.opacity = "0.8";
+                match2Element.style.opacity = "1";
+                
+                const match1TimeElement = match1Element.querySelector('.time-display');
+                if (match1TimeElement) {
+                    match1TimeElement.innerHTML = "بدأت المباراة <span style='color: var(--accent);'>🔥</span>";
+                }
+            }
+            else {
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00"; 
+                
+                const match1TimeElement = match1Element.querySelector('.time-display');
+                const match2TimeElement = match2Element.querySelector('.time-display');
+                
+                if (match1TimeElement) {
+                    match1TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary);'>⏱️</span>";
+                }
+                if (match2TimeElement) {
+                    match2TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary);'>⏱️</span>";
+                }
+            }
         }
-    }
-    // إذا كانت بعد 4:00 مساءً
-    else {
-        // عرض رسالة انتهاء المباريات
-        countdownTitle.textContent = "انتهت مباريات اليوم";
-        document.getElementById('days').textContent = "00";
-        document.getElementById('hours').textContent = "00";
-        document.getElementById('minutes').textContent = "00";
-        document.getElementById('seconds').textContent = "00"; 
-        
-        const match1TimeElement = match1Element.querySelector('.time-display');
-        const match2TimeElement = match2Element.querySelector('.time-display');
-        
-        if (match1TimeElement) {
-            match1TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary-color);'>⏱️</span>";
-        }
-        if (match2TimeElement) {
-            match2TimeElement.innerHTML = "انتهت المباراة <span style='color: var(--secondary-color);'>⏱️</span>";
-        }
-    }
-}
-        // دالة مساعدة لتحديث العرض
+
         function updateDisplay(timeDiff) {
-            // حساب الأيام، الساعات، الدقائق، الثواني
             const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
             
-            // تحديث العرض
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
@@ -1840,18 +1842,17 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Start the countdown timer
             updateCountdown();
             setInterval(updateCountdown, 1000);
 
-            // Re-apply the fadeIn style to ensure animations trigger correctly on load
-            const animatedItems = document.querySelectorAll('.animated-item');
+            const animatedItems = document.querySelectorAll('.fade-in');
             animatedItems.forEach(item => {
                 item.style.opacity = 0; 
                 void item.offsetWidth; 
                 item.style.opacity = 1; 
             });
-            // التحكم في قسم مباريات نصف النهائي
+
+            // Toggle sections
             const semiFinalsBtn = document.getElementById('semiFinalsBtn');
             const semiFinalsSection = document.getElementById('semiFinalsSection');
             const closeSemiFinalsBtn = document.getElementById('closeSemiFinalsBtn');
@@ -1866,7 +1867,7 @@
                     semiFinalsSection.classList.add('hidden');
                 });
             }
-            // التحكم في قسم مباريات ربع النهائي
+
             const quarterFinalsBtn = document.getElementById('quarterFinalsBtn');
             const quarterFinalsSection = document.getElementById('quarterFinalsSection');
             const closeQuarterFinalsBtn = document.getElementById('closeQuarterFinalsBtn');
@@ -1882,7 +1883,6 @@
                 });
             }
 
-            // التحكم في قسم جدول نقاط الفرق
             const standingsBtn = document.getElementById('standingsBtn');
             const standingsSection = document.getElementById('standingsSection');
             const closeStandingsBtn = document.getElementById('closeStandingsBtn');
@@ -1898,7 +1898,6 @@
                 });
             }
 
-            // التحكم في قسم أفضل اللاعبين
             const bestPlayersBtn = document.getElementById('bestPlayersBtn');
             const bestPlayersSection = document.getElementById('bestPlayersSection');
             const closePlayersBtn = document.getElementById('closePlayersBtn');
@@ -1914,7 +1913,6 @@
                 });
             }
 
-            // التحكم في قسم نتائج المباريات السابقة
             const previousResultsBtn = document.getElementById('previousResultsBtn');
             const previousResultsSection = document.getElementById('previousResultsSection');
             const closeResultsBtn = document.getElementById('closeResultsBtn');
@@ -1933,5 +1931,3 @@
     </script>
 </body>
 </html>
-
-
