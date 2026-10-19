@@ -962,5 +962,47 @@
             });
         }
     </script>
+window.openMemory = function (index) {
+    if (!photos.length) return;
+
+    currentIndex = index;
+    previousFocus = document.activeElement;
+    updateMemory();
+
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    lightbox.querySelector('.lightbox-close').focus();
+  };
+
+  function updateMemory() {
+    const photo = photos[currentIndex];
+    if (!photo) return;
+
+    largeImage.src = photo.src;
+    largeImage.alt = photo.alt;
+    counter.textContent = (currentIndex + 1) + ' / ' + photos.length;
+  }
+
+  window.changeMemory = function (direction) {
+    if (!photos.length) return;
+
+    currentIndex =
+      (currentIndex + direction + photos.length) % photos.length;
+
+    updateMemory();
+  };
+
+  window.closeMemory = function () {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+
+    if (previousFocus && typeof previousFocus.focus === 'function') {
+      previousFocus.focus();
+    }
+  };
+
+  document.addEventListener('keydown', function (event) {
+    if (!lightbox.classList.contains('
 </body>
 </html>
