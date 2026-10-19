@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
-        
+
         :root {
             --primary: #1e3a8a;
             --secondary: #dc2626;
@@ -20,17 +20,18 @@
             --warning: #f59e0b;
             --info: #3b82f6;
         }
-        
+
         body {
             font-family: 'Tajawal', sans-serif;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        
+
         .hero-section {
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
@@ -39,7 +40,7 @@
             overflow: hidden;
             border-radius: 24px;
         }
-        
+
         .hero-section::before {
             content: "";
             position: absolute;
@@ -51,7 +52,7 @@
             opacity: 0.3;
             animation: float 20s infinite linear;
         }
-        
+
         .card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -61,7 +62,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .card::before {
             content: "";
             position: absolute;
@@ -73,17 +74,17 @@
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
-        
+
         .card:hover::before {
             transform: scaleX(1);
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), #3b82f6);
             color: white;
@@ -104,7 +105,7 @@
             justify-content: center;
             min-height: 80px;
         }
-        
+
         .btn-primary::before {
             content: "";
             position: absolute;
@@ -115,16 +116,16 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
+
         .btn-primary:hover::before {
             left: 100%;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 7px 20px rgba(59, 130, 246, 0.6);
         }
-        
+
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
@@ -136,7 +137,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .countdown-value {
             font-size: 2rem;
             font-weight: bold;
@@ -144,7 +145,7 @@
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
         .team-logo {
             width: 100px;
             height: 100px;
@@ -160,12 +161,12 @@
             border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .team-logo:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
-        
+
         .vs-badge {
             background: var(--secondary);
             color: white;
@@ -181,13 +182,13 @@
             animation: pulse 2s infinite;
             position: relative;
         }
-        
+
         .section-title {
             position: relative;
             padding-bottom: 15px;
             margin-bottom: 25px;
         }
-        
+
         .section-title::after {
             content: "";
             position: absolute;
@@ -198,12 +199,12 @@
             background: linear-gradient(to left, var(--accent), var(--primary));
             border-radius: 2px;
         }
-        
+
         .table-row:hover {
             background: rgba(255, 255, 255, 0.05);
             transition: background 0.3s;
         }
-        
+
         .position-badge {
             display: inline-flex;
             align-items: center;
@@ -215,138 +216,138 @@
             font-weight: bold;
             transition: transform 0.3s;
         }
-        
+
         .position-badge:hover {
             transform: scale(1.2);
         }
-        
+
         .position-1 {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
         }
-        
+
         .position-2 {
             background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
             color: #000;
         }
-        
+
         .position-3 {
             background: linear-gradient(135deg, #CD7F32, #A66D28);
             color: #000;
         }
-        
+
         .position-other {
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
-        
+
         .player-card {
             transition: all 0.3s ease;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .player-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-        
+
         .player-photo {
             transition: all 0.3s ease;
         }
-        
+
         .player-card:hover .player-photo {
             transform: scale(1.1);
         }
-        
+
         .pulse {
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5); }
             50% { transform: scale(1.05); box-shadow: 0 6px 15px rgba(220, 38, 38, 0.7); }
             100% { transform: scale(1); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5); }
         }
-        
+
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-10px) rotate(180deg); }
             100% { transform: translateY(0) rotate(360deg); }
         }
-        
+
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .slide-in-left {
             animation: slideInLeft 0.8s ease-out forwards;
         }
-        
+
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-30px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        
+
         .slide-in-right {
             animation: slideInRight 0.8s ease-out forwards;
         }
-        
+
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        
+
         .bounce {
             animation: bounce 2s infinite;
         }
-        
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
         }
-        
+
         .glow {
             animation: glow 2s infinite alternate;
         }
-        
+
         @keyframes glow {
             from { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
             to { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
         }
-        
+
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(to bottom, var(--primary), var(--accent));
             border-radius: 10px;
         }
-        
+
         /* Gradient Text */
         .gradient-text {
             background: linear-gradient(to right, var(--accent), var(--primary));
@@ -354,34 +355,34 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         /* Trophy Animation */
         .trophy {
             animation: rotate 10s infinite linear;
         }
-        
+
         @keyframes rotate {
             from { transform: rotateY(0deg); }
             to { transform: rotateY(360deg); }
         }
-        
+
         /* Navigation Tabs */
         .nav-tab {
             transition: all 0.3s ease;
             border-bottom: 2px solid transparent;
         }
-        
+
         .nav-tab.active {
             border-bottom: 2px solid var(--accent);
             color: var(--accent);
         }
-        
+
         /* Match Card Enhancements */
         .match-card {
             position: relative;
             overflow: hidden;
         }
-        
+
         .match-card::before {
             content: "";
             position: absolute;
@@ -393,17 +394,17 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        
+
         .match-card:hover::before {
             opacity: 1;
         }
-        
+
         /* Result Card Enhancements */
         .result-card {
             position: relative;
             overflow: hidden;
         }
-        
+
         .result-card::before {
             content: "";
             position: absolute;
@@ -415,7 +416,7 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        
+
         .result-card:hover::before {
             opacity: 1;
         }
@@ -434,22 +435,22 @@
             text-align: center;
             min-height: 90px;
         }
-        
+
         .mobile-nav-btn:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateY(-3px);
         }
-        
+
         .mobile-nav-btn.active {
             background: linear-gradient(135deg, var(--primary), #3b82f6);
             border-color: rgba(255, 255, 255, 0.3);
         }
-        
+
         .mobile-nav-btn i {
             font-size: 1.5rem;
             margin-bottom: 8px;
         }
-        
+
         .mobile-nav-btn span {
             font-size: 0.9rem;
             font-weight: bold;
@@ -459,21 +460,122 @@
         .tab-content {
             display: none;
         }
-        
+
         .tab-content.active {
             display: block;
+        }
+
+        /* --- Light Mode Styles --- */
+        body.light-mode {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            color: #0f172a;
+        }
+
+        body.light-mode .card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #0f172a;
+        }
+
+        body.light-mode .card .text-white,
+        body.light-mode .card h2,
+        body.light-mode .card h3,
+        body.light-mode .card h4 {
+            color: #0f172a !important;
+        }
+
+        body.light-mode .text-gray-300,
+        body.light-mode .text-gray-400 {
+            color: #475569 !important;
+        }
+
+        body.light-mode .bg-gray-800 {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
+        body.light-mode .countdown-item {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .mobile-nav-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #0f172a;
+        }
+
+        body.light-mode .mobile-nav-btn.active {
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: white;
+        }
+
+        body.light-mode .team-logo {
+            background: rgba(0, 0, 0, 0.05);
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode footer {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body.light-mode .table-row:hover {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        body.light-mode .position-other {
+            background: rgba(0, 0, 0, 0.1);
+            color: #0f172a;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        body.light-mode .theme-toggle-btn {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: #0f172a;
         }
     </style>
 </head>
 
 <body class="p-4">
+    <!-- Theme Toggle Button -->
+    <button id="themeToggleButton" class="theme-toggle-btn" title="تبديل الوضع الليلي/النهاري">
+        <i class="fas fa-sun" id="themeIcon"></i>
+    </button>
+
     <div class="max-w-7xl mx-auto space-y-8">
         <!-- Header Section -->
         <header class="hero-section p-8 text-center text-white fade-in">
             <div class="relative z-10">
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-4">دوري تل وعاوع الرياضي</h1>
                 <p class="text-xl md:text-2xl font-bold mb-6">المباراة النهائية - كأس البطولة</p>
-                
+
                 <!-- Countdown Timer -->
                 <div class="flex justify-center gap-4 mb-6">
                     <div class="countdown-item">
@@ -493,7 +595,7 @@
                         <div class="text-sm">ثواني</div>
                     </div>
                 </div>
-                
+
                 <div class="text-lg font-medium bg-black/30 rounded-xl p-4 inline-block">
                     <i class="fas fa-map-marker-alt ml-2"></i> الموقع: ملعب تلوعاوع
                 </div>
@@ -515,7 +617,7 @@
                 <i class="fas fa-futbol"></i>
                 <span>ربع النهائي</span>
             </button>
-            
+
             <!-- Row 2 -->
             <button class="mobile-nav-btn" data-tab="standings">
                 <i class="fas fa-table"></i>
@@ -537,12 +639,12 @@
             <div id="main-match" class="tab-content active">
                 <div class="card p-6 fade-in match-card">
                     <h2 class="text-2xl font-bold mb-6 text-white section-title">المباراة النهائية</h2>
-                    
+
                     <div class="text-center mb-6">
                         <div class="text-lg font-medium text-gray-300 mb-2">التوقيت/التاريخ:</div>
-                        <div class="text-xl font-bold bg-gray-800 rounded-xl p-3 inline-block glow">الجمعة 3:30 عصراً</div>
+                        <div class="text-xl font-bold bg-gray-800 rounded-xl p-3 inline-block glow">انتهت المباراة — 00:00</div>
                     </div>
-                    
+
                     <div class="flex flex-col md:flex-row items-center justify-between">
                         <div class="text-center flex-1 slide-in-left">
                             <div class="team-logo">
@@ -551,11 +653,11 @@
                             <div class="font-bold text-lg mb-2">الفريق الأول</div>
                             <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">الطليعي</div>
                         </div>
-                        
+
                         <div class="vs-badge pulse my-4 md:my-0">
                             ضد
                         </div>
-                        
+
                         <div class="text-center flex-1 slide-in-right">
                             <div class="team-logo">
                                 <i class="fas fa-users"></i>
@@ -564,7 +666,28 @@
                             <div class="text-xl font-bold bg-gray-800 rounded-xl p-3">جب الأملس</div>
                         </div>
                     </div>
-                    
+
+                    <!-- Final Result Card -->
+                    <div class="mt-8 bg-gradient-to-r from-yellow-900/40 to-green-900/40 p-6 rounded-2xl border border-yellow-500/40 result-card">
+                        <h3 class="text-xl font-bold text-center mb-4 text-yellow-300">
+                            <i class="fas fa-trophy ml-2"></i> النتيجة النهائية
+                        </h3>
+                        <div class="flex items-center justify-around">
+                            <div class="flex-1 text-center">
+                                <div class="text-lg font-bold text-white">جب الأملس</div>
+                                <div class="text-5xl font-extrabold text-green-400 mt-2">3</div>
+                            </div>
+                            <div class="text-3xl font-extrabold text-gray-400 px-4">:</div>
+                            <div class="flex-1 text-center">
+                                <div class="text-lg font-bold text-white">الطليعي</div>
+                                <div class="text-5xl font-extrabold text-red-400 mt-2">1</div>
+                            </div>
+                        </div>
+                        <p class="text-center text-sm font-bold text-green-300 mt-4">
+                            <i class="fas fa-check-circle ml-1"></i> انتهت المباراة — فوز جب الأملس
+                        </p>
+                    </div>
+
                     <div class="text-center mt-8">
                         <p class="text-3xl font-extrabold text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl bounce">
                             <i class="fas fa-handshake mr-2"></i> حضوركم يشرفنا
@@ -627,7 +750,7 @@
             <div id="quarter-finals" class="tab-content">
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-6 text-white section-title">مباريات ربع النهائي</h2>
-                    
+
                     <div class="space-y-6">
                         <!-- Quarter Final 1 -->
                         <div class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 p-4 rounded-xl border border-purple-500/30 result-card">
@@ -713,7 +836,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="text-center mt-4 text-yellow-300 font-bold">
                         الفرق المتأهلة لنصف النهائي: الزينبية- جب الأملس-الرياف- الطليعي
                     </div>
@@ -724,7 +847,7 @@
             <div id="standings" class="tab-content">
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-6 text-white section-title">جدول ترتيب الفرق</h2>
-                    
+
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead>
@@ -746,7 +869,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="mt-6 text-sm text-gray-300">
                         <p class="mb-2 font-bold">رموز الجدول:</p>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -783,7 +906,7 @@
             <div id="players" class="tab-content">
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-6 text-white section-title">نجوم البطولة</h2>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Player cards will be dynamically generated -->
                     </div>
@@ -794,7 +917,7 @@
             <div id="results" class="tab-content">
                 <div class="card p-6">
                     <h2 class="text-2xl font-bold mb-6 text-white section-title">نتائج مباريات المجموعات</h2>
-                    
+
                     <div class="space-y-4">
                         <!-- Result cards will be dynamically generated -->
                     </div>
@@ -802,37 +925,37 @@
             </div>
         </div>
 
-        <!-- Quick Info - هذه البطاقات تظهر دائماً في جميع الصفحات -->
+        <!-- Quick Info -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="card p-6 text-center">
                 <h3 class="text-xl font-bold mb-4 text-white section-title">عدد الفرق</h3>
                 <div class="text-4xl font-bold gradient-text">12 فريق</div>
             </div>
-            
+
             <div class="card p-6 text-center">
                 <h3 class="text-xl font-bold mb-4 text-white section-title">المباريات المقبلة</h3>
                 <div class="text-2xl font-bold gradient-text">المباراة النهائية</div>
             </div>
-            
+
             <div class="card p-6 text-center">
                 <h3 class="text-xl font-bold mb-4 text-white section-title">المتصدرون</h3>
                 <div class="text-lg font-bold gradient-text">جب الأملس & الطليعي</div>
             </div>
         </div>
-        
+
         <!-- Social Links -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="card p-6 text-center">
                 <h3 class="text-xl font-bold mb-4 text-white section-title">تواصل معنا</h3>
                 <div class="space-y-4">
-                    <a href="https://www.facebook.com/share/1HPJB7pTow/" 
+                    <a href="https://www.facebook.com/share/1HPJB7pTow/"
                        target="_blank"
                        class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-105">
                         <i class="fab fa-facebook ml-2 text-xl"></i>
                         صفحة الدوري على فيسبوك
                     </a>
-                    
-                    <a href="https://api.whatsapp.com/send?phone=963991363913" 
+
+                    <a href="https://api.whatsapp.com/send?phone=963991363913"
                        target="_blank"
                        class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-105">
                         <i class="fab fa-whatsapp ml-2 text-xl"></i>
@@ -840,7 +963,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="card p-6 text-center">
                 <h3 class="text-xl font-bold mb-4 text-white section-title">معلومات البطولة</h3>
                 <div class="space-y-3 text-left">
@@ -863,7 +986,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Footer -->
         <footer class="text-center pt-8 border-t border-gray-700/50 mt-8">
             <p class="text-gray-400 text-sm">
@@ -937,39 +1060,55 @@
 
         // تهيئة الصفحة
         document.addEventListener('DOMContentLoaded', () => {
-            // تهيئة العداد
             initializeCountdown();
-            
-            // تهيئة علامات التبويب
             initializeTabs();
-            
-            // تعبئة البيانات
             populateStandings();
             populatePlayers();
             populateResults();
-            
-            // إضافة تأثيرات للعناصر
             addAnimations();
+            initTheme();
         });
+
+        // --- Theme Functions ---
+        function initTheme() {
+            const themeToggleButton = document.getElementById('themeToggleButton');
+            const themeIcon = document.getElementById('themeIcon');
+
+            function applyTheme(isLight) {
+                if (isLight) {
+                    document.body.classList.add('light-mode');
+                    themeIcon.className = 'fas fa-moon';
+                } else {
+                    document.body.classList.remove('light-mode');
+                    themeIcon.className = 'fas fa-sun';
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            applyTheme(savedTheme === 'light');
+
+            themeToggleButton.addEventListener('click', () => {
+                const isLight = !document.body.classList.contains('light-mode');
+                applyTheme(isLight);
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+        }
 
         // وظيفة العداد
         function initializeCountdown() {
             function updateCountdown() {
                 const now = new Date();
-                
-                // تحديد موعد المباراة النهائية (بعد 6 أيام من اليوم)
                 const targetMatch = new Date();
-            
                 targetMatch.setHours(15, 30, 0, 0);
-                
+
                 const timeDiff = targetMatch - now;
-                
+
                 if (timeDiff > 0) {
                     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-                    
+
                     document.getElementById('days').textContent = String(days).padStart(2, '0');
                     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
                     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
@@ -990,22 +1129,18 @@
         function initializeTabs() {
             const tabs = document.querySelectorAll('.mobile-nav-btn');
             const tabContents = document.querySelectorAll('.tab-content');
-            
-            // إخفاء جميع المحتويات أولاً
+
             tabContents.forEach(content => {
                 content.classList.remove('active');
             });
-            
-            // إظهار المحتوى النشط فقط
+
             document.getElementById('main-match').classList.add('active');
-            
+
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // إزالة النشاط من جميع علامات التبويب
                     tabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // إضافة النشاط للعلامة المحددة
+
                     tab.classList.add('active');
                     const tabId = tab.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
@@ -1016,16 +1151,16 @@
         // وظيفة تعبئة جدول الترتيب
         function populateStandings() {
             const tbody = document.querySelector('#standings tbody');
-            
+
             teamsData.forEach(team => {
                 const row = document.createElement('tr');
                 row.className = 'table-row';
-                
+
                 let positionClass = 'position-other';
                 if (team.position === 1) positionClass = 'position-1';
                 else if (team.position === 2) positionClass = 'position-2';
                 else if (team.position === 3) positionClass = 'position-3';
-                
+
                 row.innerHTML = `
                     <td class="py-3 px-2 text-center"><span class="position-badge ${positionClass}">${team.position}</span></td>
                     <td class="py-3 px-2 text-right">
@@ -1043,7 +1178,7 @@
                     <td class="py-3 px-2 text-center">${team.goalDiff > 0 ? '+' : ''}${team.goalDiff}</td>
                     <td class="py-3 px-2 text-center font-bold">${team.points}</td>
                 `;
-                
+
                 tbody.appendChild(row);
             });
         }
@@ -1051,11 +1186,11 @@
         // وظيفة تعبئة اللاعبين
         function populatePlayers() {
             const container = document.querySelector('#players .grid');
-            
+
             playersData.forEach(player => {
                 const playerCard = document.createElement('div');
                 playerCard.className = 'player-card bg-gradient-to-r from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30';
-                
+
                 playerCard.innerHTML = `
                     <div class="flex items-center space-x-3 space-x-reverse">
                         <div class="player-photo w-16 h-16 bg-gradient-to-br ${player.color} rounded-full flex items-center justify-center overflow-hidden border-2 border-white/30">
@@ -1069,7 +1204,7 @@
                         </div>
                     </div>
                 `;
-                
+
                 container.appendChild(playerCard);
             });
         }
@@ -1077,16 +1212,16 @@
         // وظيفة تعبئة النتائج
         function populateResults() {
             const container = document.querySelector('#results .space-y-4');
-            
+
             resultsData.forEach(result => {
                 const resultCard = document.createElement('div');
                 resultCard.className = 'result-card bg-gradient-to-l from-green-900/30 to-blue-900/30 p-4 rounded-xl border border-green-500/30';
-                
+
                 let noteHtml = '';
                 if (result.note) {
                     noteHtml = `<div class="text-center mt-2 text-yellow-300 text-sm">${result.note}</div>`;
                 }
-                
+
                 resultCard.innerHTML = `
                     <div class="flex flex-col md:flex-row items-center justify-between">
                         <div class="flex-1 text-center">
@@ -1106,7 +1241,7 @@
                     </div>
                     ${noteHtml}
                 `;
-                
+
                 container.appendChild(resultCard);
             });
         }
@@ -1114,7 +1249,7 @@
         // وظيفة إضافة تأثيرات للعناصر
         function addAnimations() {
             const animatedItems = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-            
+
             animatedItems.forEach(item => {
                 item.style.opacity = 0;
                 void item.offsetWidth;
@@ -1124,8 +1259,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
